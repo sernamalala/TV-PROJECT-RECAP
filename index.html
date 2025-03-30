@@ -3,18 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TV Show Project | My Name (My GitHub username)</title>
+    <title>TV Show Project | Serna Malala (GitHub - sernamalala)</title>
     <link href="style.css" rel="stylesheet" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Delius&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Spinnaker&display=swap" rel="stylesheet">
   </head>
 
   <body>
+    <h4>This Data is from <a href="https://www.tvmaze.com/">TV MAZE</a></h4>
+    <div id="searchbar">
+      <input type="text" id="search" placeholder="Search">
+      <p id="display"></p>
+      <select name="episodes" id="dropdown"></select>
+    </div>
     <div id="root">
     </div>
 
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
     <script src="episodes.js"></script>
-
     <!-- Loads YOUR javascript code -->
     <script src="script.js"></script>
   </body>

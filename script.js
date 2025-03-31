@@ -149,6 +149,8 @@ const showDropdown = document.getElementById("show-dropdown");
 
 function initialiseShowDropDown(list) {
 
+  list.sort((show1,show2) => show1.name.localeCompare(show2.name));
+
   list.forEach(show =>{
     let option = document.createElement("option");
     option.id = show.id;

@@ -25,7 +25,7 @@ body{
   outline: none;
   font-family: "Montserrat", sans-serif;
 }
-#dropdown{
+#episode-dropdown,#show-dropdown{
   margin-left: 30px;
   font-family: "Montserrat", sans-serif;
   border: 1px solid #BDB395;

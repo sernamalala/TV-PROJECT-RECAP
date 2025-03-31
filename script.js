@@ -19,6 +19,7 @@ async function fetchData() {
     
   } catch (error) {
     console.error("Error retrieving data: ", error)
+    alert("Error fetching data. Please reload page")
   }
   
 }

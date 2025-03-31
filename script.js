@@ -1,27 +1,30 @@
 let allEpisodeList;
 let allShowsList;
+let id = 82;
 function setup() {
-  fetchData();
+  fetchData(id);
 }
 
-let episodeURL = "https://api.tvmaze.com/shows/82/episodes";
-let showURL = "https://api.tvmaze.com/shows";
 //API url
-async function fetchData() {
+async function fetchData(identity) {
 //ASYNC function used to retrieve data from an API URL
   try {
+    let episodeURL = `https://api.tvmaze.com/shows/${identity}/episodes`;
+    let showURL = "https://api.tvmaze.com/shows";
+
     const response = await fetch(episodeURL);
     const data = await response.json();
+    console.log(data)
     //need to use await because data needs to load and be in program
 
 
     const showResponse = await fetch(showURL);
     const showData = await showResponse.json();
 
-    console.log(showData);
+   
     allEpisodeList = data;
     allShowsList = showData;
-
+    root.innerHTML = "";
     displayEpisodes(allEpisodeList);
     initialiseDropDown(allEpisodeList);
     initialiseShowDropDown(allShowsList);
@@ -143,27 +146,27 @@ episodeDropdown.addEventListener("change", ()=>{
 //SHOW-DROPDOWN
 
 const showDropdown = document.getElementById("show-dropdown");
-let allShows = document.createElement("option");
-allShows.textContent = "Display All Shows";
-showDropdown.appendChild(allShows);
 
 function initialiseShowDropDown(list) {
 
   list.forEach(show =>{
     let option = document.createElement("option");
+    option.id = show.id;
     option.textContent = `${show.name}`
     showDropdown.appendChild(option);
   })
 }
 
-function selectShow(list) {
-  
-  let optionSelected = showDropdown.value.toLowerCase();
-  console.log(optionSelected);
-
-}
 
 showDropdown.addEventListener("change", ()=>{
-  selectShow(allEpisodeList);
+
+  let selectedShow = document.querySelector("#show-dropdown option:checked");
+  let newId = Number(selectedShow.id);
+ 
+  episodeDropdown.innerHTML = "";
+  
+  if(id!==newId){
+  fetchData(newId);
+  }
 });
 window.onload = setup;

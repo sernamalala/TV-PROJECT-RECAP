@@ -1,8 +1,26 @@
 let allEpisodeList;
 function setup() {
-  allEpisodeList = getAllEpisodes();
-  displayEpisodes(allEpisodeList);
-  initialiseDropDown(allEpisodeList);
+  fetchData();
+}
+
+let showURL = "https://api.tvmaze.com/shows/82/episodes";
+//API url
+async function fetchData() {
+//ASYNC function used to retrieve data from an API URL
+  try {
+    const response = await fetch(showURL);
+    const data = await response.json();
+    //need to use await because data needs to load and be in program
+    console.log(data)
+
+    allEpisodeList = data;
+    displayEpisodes(allEpisodeList);
+    initialiseDropDown(allEpisodeList);
+    
+  } catch (error) {
+    console.error("Error retrieving data: ", error)
+  }
+  
 }
 
 const root = document.getElementById("root");
